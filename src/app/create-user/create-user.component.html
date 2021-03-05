@@ -1,0 +1,143 @@
+<div [hidden]="error == ''">
+  <div *ngFor="let item of error">
+    <div class="alert alert-danger" role="alert">
+      {{item}}
+    </div>
+    <p></p>
+  </div>
+
+</div>
+
+<div class="input-group mb-3 ">
+  <div class="input-group-prepend ">
+
+    <span class="input-group-text " [ngClass]="{class1:user.nameError}" id="basic-addon1">@</span>
+  </div>
+
+
+  <input [(ngModel)]="user.username" type="text" class="form-control" placeholder="логин" aria-label="Username"
+         aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3 ">
+  <div class="input-group-prepend ">
+
+    <span class="input-group-text " [ngClass]="{class1:user.nameError}" id="basic-addon7">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+           class="bi bi-envelope-open-fill" viewBox="0 0 16 16">
+  <path
+    d="M8.941.435a2 2 0 0 0-1.882 0l-6 3.2A2 2 0 0 0 0 5.4v.313l6.709 3.933L8 8.928l1.291.717L16 5.715V5.4a2 2 0 0 0-1.059-1.765l-6-3.2zM16 6.873l-5.693 3.337L16 13.372v-6.5zm-.059 7.611L8 10.072.059 14.484A2 2 0 0 0 2 16h12a2 2 0 0 0 1.941-1.516zM0 13.373l5.693-3.163L0 6.873v6.5z"/>
+</svg>
+
+    </span>
+  </div>
+
+
+  <input [(ngModel)]="user.email" type="text" class="form-control" placeholder="Почта" aria-label="Username"
+         aria-describedby="basic-addon1">
+</div>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" [ngClass]="{class1:user.passwordError}" id="basic-addon2">
+
+    <svg *ngIf="user.passwordError == false" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+         fill="currentColor"
+         class="bi bi-shield-lock-fill"
+         viewBox="0 0 16 16">
+  <path fill-rule="evenodd"
+        d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5z"/>
+</svg>
+
+      <svg *ngIf="user.passwordError != false" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+           fill="currentColor" class="bi bi-shield-fill-x"
+           viewBox="0 0 16 16">
+  <path
+    d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zM6.854 5.146L8 6.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 7l1.147 1.146a.5.5 0 0 1-.708.708L8 7.707 6.854 8.854a.5.5 0 1 1-.708-.708L7.293 7 6.146 5.854a.5.5 0 1 1 .708-.708z"/>
+</svg>
+
+    </span>
+  </div>
+  <input [(ngModel)]="user.password" type="password" class="form-control" placeholder="Пароль" aria-label="password"
+         aria-describedby="basic-addon1">
+</div>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" [ngClass]="{class1:user.cPasswordError}" id="basic-addon3">
+
+    <svg *ngIf="user.cPasswordError == false" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+         fill="currentColor"
+         class="bi bi-shield-lock-fill"
+         viewBox="0 0 16 16">
+  <path fill-rule="evenodd"
+        d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5z"/>
+</svg>
+
+      <svg *ngIf="user.cPasswordError != false" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+           fill="currentColor" class="bi bi-shield-fill-x"
+           viewBox="0 0 16 16">
+  <path
+    d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zM6.854 5.146L8 6.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 7l1.147 1.146a.5.5 0 0 1-.708.708L8 7.707 6.854 8.854a.5.5 0 1 1-.708-.708L7.293 7 6.146 5.854a.5.5 0 1 1 .708-.708z"/>
+</svg>
+
+    </span>
+  </div>
+  <input [(ngModel)]="user.confirmPassword" type="password" class="form-control" placeholder="Повторить пароль"
+         aria-label="password" aria-describedby="basic-addon1">
+</div>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon5">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill"
+     viewBox="0 0 16 16">
+  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  <path fill-rule="evenodd"
+        d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+</svg>
+
+    </span>
+  </div>
+  <input [(ngModel)]="user.firstName" type="text" class="form-control" placeholder="Фамилия"
+         aria-label="firstName" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon4">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill"
+     viewBox="0 0 16 16">
+  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  <path fill-rule="evenodd"
+        d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+</svg>
+
+    </span>
+  </div>
+  <input [(ngModel)]="user.lastName" type="text" class="form-control" placeholder="Имя"
+         aria-label="lastName" aria-describedby="basic-addon1">
+</div>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon6">
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill"
+           viewBox="0 0 16 16">
+  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  <path fill-rule="evenodd"
+        d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+</svg>
+
+    </span>
+  </div>
+  <input [(ngModel)]="user.middleName" type="text" class="form-control" placeholder="Отчество"
+         aria-label="middleName" aria-describedby="basic-addon1">
+</div>
+
+<button class="btn btn-light btn-dark" (click)="crate()">Создать пользователя</button>

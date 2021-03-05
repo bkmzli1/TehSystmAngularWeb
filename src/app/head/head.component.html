@@ -1,0 +1,46 @@
+<nav class="header navbar navbar-light bg-light navbar-expand-lg  clearfix">
+  <a class="navbar-brand">HelpNTI</a>
+
+  <div class="collapse navbar-collapse " id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLinkActive="active" routerLink="/home">Главная</a>
+      </li>
+      <li class="nav-item active" *ngIf="authenticated()">
+        <a class="nav-link" routerLinkActive="active" routerLink="/orders">Заказы</a>
+      </li>
+      <li class="nav-item active" *ngIf="authenticated()">
+        <a class="nav-link" routerLinkActive="active" routerLink="/ordering">Выполненные заказы</a>
+      </li>
+      <li class="nav-item active" *ngIf="authenticated()">
+        <a class="nav-link" routerLinkActive="active" routerLink="/ordersCreate">Создать заказ</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active" [hidden]="authenticated()">
+        <a class="nav-link" routerLinkActive="active" routerLink="/login">Авторизация</a>
+      </li>
+      <li class="nav-item active" [hidden]=" !app.isRoot()">
+        <a class="nav-link" routerLinkActive="active" routerLink="/reg">Регистрация</a>
+      </li>
+<!--      <li class="nav-item active" [hidden]="!authenticated()">-->
+<!--        <a class="nav-link" routerLinkActive="active" routerLink="/myOrders">Мои заказы</a>-->
+<!--      </li>-->
+      <li class="nav-item active" [hidden]="!authenticated()">
+        <a class="nav-link" routerLinkActive="active" routerLink="/usere/{{app.login.id}}">Профиль {{app.login.username}}</a>
+      </li>
+      <li class="nav-item active" [hidden]="!authenticated()">
+        <a class="nav-link" routerLinkActive="active" href="logout">Выход</a>
+      </li>
+    </ul>
+
+  </div>
+  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+
+

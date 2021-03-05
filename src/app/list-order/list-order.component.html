@@ -1,0 +1,35 @@
+<div class="text_padding">
+  <table class="table">
+    <thead class="table table-striped">
+    <tr>
+      <th scope="col">Заказал</th>
+      <th scope="col">Задача</th>
+      <th scope="col">Уровень </th>
+      <th scope="col">Дата создания</th>
+      <th scope="col">Исполнитель</th>
+      <th scope="col">Дата исполнения</th>
+      <th scope="col">статус</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr style=" z-index: 0;" *ngFor="let item of orders" (click)="text(item.id) ">
+
+      <td>{{item.creator.lastName + ' ' + item.creator.firstName + ' ' + item.creator.middleName}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.level}}</td>
+      <td>{{item.crate}}</td>
+      <td>
+        <div *ngFor="let ex of item.executor">
+          <p> {{ex.lastName + ' ' + ex.firstName + ' ' + ex.middleName}}</p>
+        </div>
+
+      </td>
+      <td>{{item.executed}}</td>
+
+      <td style=" z-index: 10;"><input  type="checkbox" name="option2" [checked]="item.done" ></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

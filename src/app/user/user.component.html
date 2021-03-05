@@ -1,0 +1,32 @@
+<section class="u-align-center u-clearfix u-section-1" id="carousel_cce9">
+  <div [style.backgroundImage]="'url('+app.serverURL+app.login.imgFon.img+')'" class="u-container-style u-expanded-width u-group u-image u-shape-rectangle u-image-1" data-image-width="1280" data-image-height="853">
+    <div class="u-container-layout u-container-layout-1"></div>
+  </div>
+  <div alt="" [style.backgroundImage]="'url('+app.serverURL+app.login.img.img+')'" class="u-image u-image-circle u-image-2"></div>
+</section>
+
+<table width="100%">
+  <tbody>
+  <tr>
+    <td>ФИО: {{app.login.lastName + ' ' + app.login.firstName + ' ' + app.login.middleName}}</td>
+    <td>Почта {{app.login.email}}</td>
+    <td>Роли: <a *ngFor="let item of app.login.authorities"> {{item.authority+' '}} </a> </td>
+  </tr>
+  <tr>
+    <td>Телефон: {{app.login.telephone}}</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+
