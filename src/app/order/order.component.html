@@ -36,11 +36,11 @@
     </div>
     <p></p>
 
-    <div *ngIf="orders.done && !orders.doneCrate" [hidden]="isUserCre()">
+    <div *ngIf="orders.done && !orders.doneCrate" [hidden]="!isUserCre()">
       <button style="width: 100%" class="ld-but" (click)="creComplete(1)">Подтвердить выполнение</button>
     </div>
     <p></p>
-    <div *ngIf="orders.done && !orders.doneCrate" [hidden]="isUserCre()">
+    <div *ngIf="orders.done && !orders.doneCrate" [hidden]="!isUserCre()">
       <button style="width: 100%" class="ld-but" (click)="creComplete(0)">Опровергнуть выполнение</button>
     </div>
   </div>
