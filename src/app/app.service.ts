@@ -2,20 +2,21 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
+import {AppComponent} from './app.component';
 
 class Role {
   authority: string;
 }
 
 class Img {
-  img: string;
+  img = '';
 }
 
 class Login {
   id = '';
   username = ' ';
-  img: Img;
-  imgFon: Img;
+  img: Img = new Img();
+  imgFon: Img = new Img();
   authorities: Role[] = [];
   password: string;
   confirmPassword: string;
@@ -24,24 +25,31 @@ class Login {
   lastName: string;
   middleName: string;
   telephone: string;
+  isAccountNonExpired;
+  isAccountNonLocked;
+  isEnabled;
+  isCredentialsNonExpired;
 }
 
 @Injectable()
 export class AppService {
   isAdmin = false;
-  serverURL2 = '//localhost/';
-  serverURL = '';
+  serverURL = '//localhost/';
+  serverURL2 = '';
   authenticated = false;
   login: Login = new Login();
 
   imgs: string[];
 
+
   constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) {
+
     http.get(this.serverURL + 'usersss').subscribe((next: Login) => {
       if (next != undefined || next != null) {
         this.authenticated = true;
         this.login = next;
       }
+
     });
   }
 

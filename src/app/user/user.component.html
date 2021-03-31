@@ -1,32 +1,102 @@
 <section class="u-align-center u-clearfix u-section-1" id="carousel_cce9">
-  <div [style.backgroundImage]="'url('+app.serverURL+app.login.imgFon.img+')'" class="u-container-style u-expanded-width u-group u-image u-shape-rectangle u-image-1" data-image-width="1280" data-image-height="853">
+  <div [style.backgroundImage]="'url('+app.serverURL+login.imgFon.img+')'"
+       class="u-container-style u-expanded-width u-group u-image u-shape-rectangle u-image-1" data-image-width="1280"
+       data-image-height="853">
     <div class="u-container-layout u-container-layout-1"></div>
   </div>
-  <div alt="" [style.backgroundImage]="'url('+app.serverURL+app.login.img.img+')'" class="u-image u-image-circle u-image-2"></div>
+  <div alt="" [style.backgroundImage]="'url('+app.serverURL+login.img.img+')'"
+       class="u-image u-image-circle u-image-2"></div>
 </section>
+<div class="container mt-3 ">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Логин     </span>
+        </div>
+        <label class="form-control"> {{login.username}}</label>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
 
-<table width="100%">
-  <tbody>
-  <tr>
-    <td>ФИО: {{app.login.lastName + ' ' + app.login.firstName + ' ' + app.login.middleName}}</td>
-    <td>Почта {{app.login.email}}</td>
-    <td>Роли: <a *ngFor="let item of app.login.authorities"> {{item.authority+' '}} </a> </td>
-  </tr>
-  <tr>
-    <td>Телефон: {{app.login.telephone}}</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  </tbody>
-</table>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> ФИО</span>
+        </div>
+        <label class="form-control"
+        > {{login.lastName}} {{login.firstName}} {{login.middleName}}</label>
+      </div>
 
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Почта     </span>
+        </div>
+        <label class="form-control"
+        >{{login.email}}</label>
+      </div>
+
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Телефон     </span>
+        </div>
+        <label class="form-control"
+        >{{login.telephone}}</label>
+      </div>
+
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Роли     </span>
+        </div>
+        <label class="form-control"> <div *ngFor="let role of login.authorities">{{role.authority}} </div></label>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<div class="container mt-3" *ngIf="app.isAdmin || data == true">
+
+  <div class="col-12 col-md-6 col-lg-4" >
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Учетная запись Просроченной      </span>
+      </div>
+      <label class="form-control"> <div >{{bolConvertor(!login.accountNonExpired)}} </div></label>
+    </div>
+
+  </div>
+  <div class="col-12 col-md-6 col-lg-4" >
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Учетная Запись  Заблокирована     </span>
+      </div>
+      <label class="form-control"> <div >{{ bolConvertor(!login.accountNonLocked)}} </div></label>
+    </div>
+
+  </div>
+  <div class="col-12 col-md-6 col-lg-4" >
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Учетная Запись включена     </span>
+      </div>
+      <label class="form-control"> {{bolConvertor(login.enabled)}} </label>
+    </div>
+
+  </div>
+  <div class="col-12 col-md-6 col-lg-4"  >
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Учетная Запись Истекла</span>
+      </div>
+      <label class="form-control">{{bolConvertor(!login.credentialsNonExpired)}}</label>
+    </div>
+
+  </div>
+
+</div>

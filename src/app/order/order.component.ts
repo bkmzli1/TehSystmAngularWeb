@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AppService} from '../app.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
+import {AppComponent} from '../app.component';
 
 class User {
   id: string;
@@ -56,7 +57,8 @@ export class OrderComponent implements OnInit {
   massage: Massages = new Massages();
   private fileToUpload: FormData;
 
-  constructor(private route: ActivatedRoute, public app: AppService, private http: HttpClient, private router: Router) {
+  constructor(private route: ActivatedRoute, public app: AppService, private http: HttpClient, private router: Router, public appc: AppComponent) {
+    this.appc.cont = true;
     this.route.params.subscribe((params: any) => this.id = params.id);
 
     http.get(app.serverURL + 'task/get/' + this.id).subscribe((next: any) => {
@@ -67,6 +69,22 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let inputs = document.querySelectorAll('.input__file');
+    Array.prototype.forEach.call(inputs, function (input) {
+      let label = input.nextElementSibling,
+        labelVal = label.querySelector('.input__file-button-text').innerText;
+
+      input.addEventListener('change', function (e) {
+        let countFiles = '';
+        if (this.files && this.files.length >= 1)
+          countFiles = this.files.length;
+
+        if (countFiles)
+          label.querySelector('.input__file-button-text').innerText = 'Выбрано файлов: ' + countFiles;
+        else
+          label.querySelector('.input__file-button-text').innerText = labelVal;
+      });
+    });
   }
 
   href(s: string) {

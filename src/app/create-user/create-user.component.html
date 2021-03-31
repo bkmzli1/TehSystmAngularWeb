@@ -1,6 +1,18 @@
+<div class="mt-3">
+
 <div [hidden]="error == ''">
   <div *ngFor="let item of error">
     <div class="alert alert-danger" role="alert">
+      {{item}}
+    </div>
+    <p></p>
+  </div>
+
+</div>
+
+<div [hidden]="!(successful.length > 0)">
+  <div *ngFor="let item of successful">
+    <div class="alert alert-success" role="alert">
       {{item}}
     </div>
     <p></p>
@@ -140,4 +152,28 @@
          aria-label="middleName" aria-describedby="basic-addon1">
 </div>
 
-<button class="btn btn-light btn-dark" (click)="crate()">Создать пользователя</button>
+<div class=" ">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="input-group mb-3">
+        <div class="custom-control custom-checkbox" (click)="user.admin = true">
+          <input type="checkbox" class="custom-control-input" id="customCheck1">
+          <label class="custom-control-label" for="customCheck1">Администратор</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="input-group mb-3">
+        <div  class="custom-control custom-checkbox" (click)="user.executor = true">
+          <input type="checkbox"  class="custom-control-input" id="customCheck2">
+          <label class="custom-control-label" for="customCheck2">Исполнитель</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="ld-but" (click)="crate()">Создать пользователя</button>
+</div>
+
+
+
+</div>

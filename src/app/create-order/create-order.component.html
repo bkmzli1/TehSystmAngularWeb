@@ -8,6 +8,7 @@
     </div>
 
   </div>
+
   <div>
     <label><p><b>Выберите пользователя:</b></p></label>
     <p>
@@ -16,11 +17,12 @@
                 [value]="item.id">{{item.lastName}} {{item.firstName}} {{item.middleName}} </option>
       </select>
       <br>
-      <button class="btn-block btn-group-lg" (click)="addEx()">Добавить исполнителя</button>
+      <button class="ld-but" (click)="addEx()">Добавить исполнителя</button>
 
 
     </p>
   </div>
+
 
   <div class="album  " style="width: min-content">
     <div style="width: min-content" class="">
@@ -43,33 +45,92 @@
     </div>
   </div>
 
-
-  <div>
-    <p><b>Название заказа:</b></p>
-    <input style="width: 100%" type="text" [(ngModel)]="name">
-    <p><b>Текст заказа:</b></p>
-    <div class="author_information text_padding" style="width: 100%"><label style="width: 100%">
-      <textarea maxlength="255" class="text_padding" style="width: 100%; height: 150px" [(ngModel)]="text"></textarea>
-      <div><label>{{text.length}}/255</label></div>
-    </label>
-
-    </div>
-
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label"><b>Название заказа:</b></label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Тема" [(ngModel)]="name">
   </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"><b>Сообщение</b></label>
+    <textarea maxlength="{{maxText}}" class="form-control" id="exampleFormControlTextarea1" rows="3"
+              [(ngModel)]="text"></textarea>
+    <div><label>{{text.length}}/{{maxText}}</label></div>
+  </div>
+
   <form>
-<!--    HIGH,MEDIUM,LOW,INFO-->
+    <!--    HIGH,MEDIUM,LOW,INFO-->
     <p><b>Тип заказа:</b></p>
     <p><input name="dzen" type="radio" value="nedzen" checked (click)="type('INFO')"> Информация</p>
     <p><input name="dzen" type="radio" value="dzen" (click)="type('HIGH')"> Важный</p>
     <p><input name="dzen" type="radio" value="pdzen" (click)="type('MEDIUM')"> Нормальный</p>
     <p><input name="dzen" type="radio" value="pdzen" (click)="  type('LOW')"> Низкий</p>
-  </form>
-  <input type="file"
-         id="file"
-         name="file"
-         (change)="handleFileInput($event.target.files)" multiple accept="image/*,image/jpeg">
-  <br>
-  <p></p>
 
-  <button class="btn btn-info" (click)="create()">Создать</button>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="input__wrapper">
+            <input name="file" type="file" name="file" id="input__file" class="input input__file"
+                   (change)="handleFileInput($event.target.files)" multiple accept="image/*,image/jpeg">
+            <label for="input__file" class="input__file-button">
+    <span class="input__file-icon-wrapper">
+         <svg class="input__file-icon" height="20" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; filter: invert(1);" xml:space="preserve">
+<g>
+	<g>
+		<path d="M380.032,133.472l-112-128C264.992,2.016,260.608,0,256,0c-4.608,0-8.992,2.016-12.032,5.472l-112,128
+			c-4.128,4.736-5.152,11.424-2.528,17.152C132.032,156.32,137.728,160,144,160h64v208c0,8.832,7.168,16,16,16h64
+			c8.832,0,16-7.168,16-16V160h64c6.272,0,11.968-3.648,14.56-9.376C385.152,144.896,384.192,138.176,380.032,133.472z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<path d="M432,352v96H80v-96H16v128c0,17.696,14.336,32,32,32h416c17.696,0,32-14.304,32-32V352H432z"/>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+
+  </span>
+
+              <span class="input__file-button-text">Выберите файл</span>
+            </label>
+          </div>
+          <br>
+          <p></p>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <button  class="ld-but" (click)="create()">Создать</button>
+        </div>
+      </div>
+
+  </form>
 </div>

@@ -1,4 +1,5 @@
 <div class="text_padding">
+
   <h1 align="center">Тема: {{orders.name}}</h1>
   <div>
     <p *ngIf="orders.done == true">Статус: Выполнено {{orders.executed}} {{begin()}}</p>
@@ -11,7 +12,7 @@
     Должен исполнить: {{item.lastName + ' ' + item.firstName + ' ' + item.middleName}}
   </div>
 
-  <p>Описание:  {{orders.text}}</p>
+  <p style="word-break: break-word">Описание:  {{orders.text}}</p>
   <div class="grid">
     <label [attr.href]="app.serverURL +  item.img" *ngFor="let item of orders.imgs" class="grid-item"><a
       [href]="app.serverURL +  item.img">
@@ -48,21 +49,48 @@
 
 <div id="html-chat">
   <div class="holder-html-chat">
-    <div id="WebChatFormForm" class="html-chat-history">
+    <div id="WebChatFormForm" class="html-chat-history ">
       <div *ngFor="let ms of orders.massages">
-        <p>@>{{ms.user.lastName}} {{ms.user.firstName}} {{ms.user.middleName}}</p>
-        <div *ngIf="ms.imgs != null">
-          <div *ngFor="let img of ms.imgs ">
-            <a [href]="app.serverURL + img.img">
-              <div class="grid">
-                <img style="height: auto; width: 400px" [src]="app.serverURL + img.img">
+        <div *ngIf="ms.user.id == app.login.id">
+          <div class="alert-secondary my-2 px-2 py-1 ">
+
+
+            <p class="border-bottom border-dark" style="display: inline">
+              @> {{ms.user.lastName}} {{ms.user.firstName}} {{ms.user.middleName}}</p>
+            <div *ngIf="ms.imgs != null">
+              <div *ngFor="let img of ms.imgs ">
+                <a [href]="app.serverURL + img.img">
+                  <div class="grid">
+                    <img style="height: auto; width: 400px" [src]="app.serverURL + img.img">
+                  </div>
+                </a>
               </div>
-            </a>
+            </div>
+
+
+            <p>{{ms.text}}</p>
           </div>
         </div>
+        <div *ngIf="ms.user.id != app.login.id">
+          <div class="alert-success my-2 px-2 py-1">
 
 
-        <p>{{ms.text}}</p>
+            <p class="border-bottom border-dark" style="display: inline">
+              @> {{ms.user.lastName}} {{ms.user.firstName}} {{ms.user.middleName}}</p>
+            <div *ngIf="ms.imgs != null">
+              <div *ngFor="let img of ms.imgs ">
+                <a [href]="app.serverURL + img.img">
+                  <div class="grid">
+                    <img style="height: auto; width: 400px" [src]="app.serverURL + img.img">
+                  </div>
+                </a>
+              </div>
+            </div>
+
+
+            <p>{{ms.text}}</p>
+          </div>
+        </div>
       </div>
 
 
@@ -70,12 +98,68 @@
     <textarea [(ngModel)]="massage.text" style="width: 100%"
               id="WebChatTextID" placeholder="Отправьте сообщение в online чат..."
               class="html-chat-js-input"></textarea>
-    <div>
+    <div class="d-flex">
       <button (click)="web_send_msg();" class="ld-but">Отправить</button>
-      <input type="file"
-             id="file"
-             name="file"
-             (change)="handleFileInput($event.target.files)" multiple>
+      <div class="input__wrapper">
+        <input name="file" type="file" name="file" id="input__file" class="input input__file"
+               (change)="handleFileInput($event.target.files)" multiple>
+        <label for="input__file" class="input__file-button">
+    <span class="input__file-icon-wrapper">
+         <svg class="input__file-icon" height="20" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; filter: invert(1);" xml:space="preserve">
+<g>
+	<g>
+		<path d="M380.032,133.472l-112-128C264.992,2.016,260.608,0,256,0c-4.608,0-8.992,2.016-12.032,5.472l-112,128
+			c-4.128,4.736-5.152,11.424-2.528,17.152C132.032,156.32,137.728,160,144,160h64v208c0,8.832,7.168,16,16,16h64
+			c8.832,0,16-7.168,16-16V160h64c6.272,0,11.968-3.648,14.56-9.376C385.152,144.896,384.192,138.176,380.032,133.472z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<path d="M432,352v96H80v-96H16v128c0,17.696,14.336,32,32,32h416c17.696,0,32-14.304,32-32V352H432z"/>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+
+  </span>
+          <span class="input__file-button-text">Выберите файл</span>
+        </label>
+      </div>
     </div>
+
   </div>
 </div>
+
+

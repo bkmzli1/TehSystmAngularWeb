@@ -3,6 +3,7 @@ import {AppService} from '../app.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
+import {AppComponent} from '../app.component';
 
 
 class User {
@@ -51,7 +52,8 @@ class Orders {
 export class ListOrderComponent implements OnInit {
   orders: Orders[] = [];
 
-  constructor(private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService) {
+  constructor(private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService, public appc: AppComponent) {
+    this.appc.cont = true;
     this.http.get(app.serverURL + 'task/tasks').subscribe((response: Orders[]) => {
 
       this.orders = response;

@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {flatMap} from 'rxjs/internal/operators';
+import {AppComponent} from '../app.component';
 
 class User {
   id: string;
@@ -46,9 +47,12 @@ export class CreateOrderComponent implements OnInit {
   fileToUpload: FormData = null;
   types = 'INFO';
   name: string;
+  maxText = 255;
+  successful: string[] = [];
 
 
-  constructor(private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService) {
+  constructor(private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService, public appc: AppComponent) {
+    this.appc.cont = true;
     this.http.get(app.serverURL + 'executor').subscribe((response: User[]) => {
       this.ex = response;
       console.log(this.ex);
@@ -131,7 +135,7 @@ export class CreateOrderComponent implements OnInit {
             console.log(next.error);
             if (next.error !== undefined) {
               this.error = next.error;
-            }else {
+            } else {
               this.router.navigateByUrl('/order/' + next.id);
             }
           });
