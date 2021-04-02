@@ -1,4 +1,4 @@
-<div>
+<div class="mt-5">
   <div [hidden]="!(error.length > 0)">
     <div *ngFor="let item of error">
       <div class="alert alert-danger" role="alert">
@@ -65,7 +65,7 @@
     <p><input name="dzen" type="radio" value="pdzen" (click)="  type('LOW')"> Низкий</p>
 
       <div class="row">
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-4 col-lg-4">
           <div class="input__wrapper">
             <input name="file" type="file" name="file" id="input__file" class="input input__file"
                    (change)="handleFileInput($event.target.files)" multiple accept="image/*,image/jpeg">
@@ -121,14 +121,14 @@
 
   </span>
 
-              <span class="input__file-button-text">Выберите файл</span>
+              <span class="input__file-button-text">Выберите файлы</span>
             </label>
           </div>
           <br>
           <p></p>
         </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <button  class="ld-but" (click)="create()">Создать</button>
+        <div class="col-12 col-md-4 col-lg-4">
+          <button  class="ld-but" style="height: 60px" (click)="create()">Создать</button>
         </div>
       </div>
 

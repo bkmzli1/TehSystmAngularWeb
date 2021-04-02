@@ -427,8 +427,8 @@ input:required, textarea:required {
 
 
 .input__wrapper {
-  width: 100%;
-  position: relative;
+  width: 90%;
+
 }
 
 .input__file {
