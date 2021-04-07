@@ -34,8 +34,8 @@ class Login {
 @Injectable()
 export class AppService {
   isAdmin = false;
-  serverURL = '//localhost/';
   serverURL2 = '';
+  serverURL = '//localhost/';
   authenticated = false;
   login: Login = new Login();
 
@@ -69,15 +69,17 @@ export class AppService {
     headers = new HttpHeaders(credentials ? {
       authorization: 'Basic ' + btoa(credentials.username + ':' + credentials.password)
     } : {});
+
     this.http.get(this.serverURL + 'user', {headers}).subscribe((response: Login) => {
       this.login = response;
 
       if (this.login.username) {
         this.authenticated = true;
-        console.log(12);
-        callback();
+        callback(false);
       } else {
         this.authenticated = false;
+        callback(true);
+
       }
 
 
@@ -85,7 +87,11 @@ export class AppService {
       this.cookieService.set('us', credentials.username);
 
       return callback && callback();
+    }, errors => {
+      callback(true);
     });
+
+
 
   }
 

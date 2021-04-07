@@ -52,10 +52,10 @@
     <div id="WebChatFormForm" class="html-chat-history ">
       <div *ngFor="let ms of orders.massages">
         <div *ngIf="ms.user.id == app.login.id">
-          <div class="alert-secondary my-2 px-2 py-1 ">
+          <div class="alert-secondary my-2 px-2 py-1 ml-auto"  style="width: 45%;border-radius: 10px;">
 
 
-            <p class="border-bottom border-dark" style="display: inline">
+            <p class="border-bottom border-dark" style="display: inline" >
               @> {{ms.user.lastName}} {{ms.user.firstName}} {{ms.user.middleName}}</p>
             <div *ngIf="ms.imgs != null">
               <div *ngFor="let img of ms.imgs ">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div *ngIf="ms.user.id != app.login.id">
-          <div class="alert-success my-2 px-2 py-1">
+          <div class="alert-success my-2 px-2 py-1" style="width: 45%;border-radius: 10px;">
 
 
             <p class="border-bottom border-dark" style="display: inline">

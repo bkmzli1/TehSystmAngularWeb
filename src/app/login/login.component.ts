@@ -13,17 +13,23 @@ import {AppComponent} from '../app.component';
 export class LoginComponent implements OnInit {
 
   credentials = {username: '', password: ''};
-  error;
+  error = false;
 
-  constructor( private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService, public appc: AppComponent) {
+  constructor(private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService, public appc: AppComponent) {
     this.appc.cont = true;
 
 
   }
 
   login() {
-    this.app.authenticate(this.credentials, () => {
-      this.router.navigateByUrl('/home');
+    this.error = false;
+    this.app.authenticate(this.credentials, (error) => {
+
+      if (!error) {
+        this.router.navigateByUrl('/home');
+      }
+      this.error = error;
+
     });
 
   }

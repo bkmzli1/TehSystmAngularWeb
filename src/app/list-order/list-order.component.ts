@@ -57,6 +57,7 @@ export class ListOrderComponent implements OnInit {
     this.http.get(app.serverURL + 'task/tasks').subscribe((response: Orders[]) => {
 
       this.orders = response;
+      console.log(this.orders);
     });
   }
 

@@ -17,6 +17,7 @@
                 [value]="item.id">{{item.lastName}} {{item.firstName}} {{item.middleName}} </option>
       </select>
       <br>
+
       <button class="ld-but" (click)="addEx()">Добавить исполнителя</button>
 
 
@@ -24,12 +25,12 @@
   </div>
 
 
-  <div class="album  " style="width: min-content">
-    <div style="width: min-content" class="">
-      <div style="width: min-content" class="row  g-3">
+  <div class="album  " >
+    <div  class="">
+      <div s class="row  g-3">
         <div *ngFor="let item of exList;" class="col">
 
-          <div style="width: min-content" align="center">
+          <div style="width: min-content; " align="center">
             <img [src]='app.serverURL + item.img.img'
                  class="  bd-placeholder-img rounded-circle"
                  width="100" height="100" xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +45,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label"><b>Название заказа:</b></label>

@@ -22,6 +22,7 @@
     "ngx-cookie-service": "^11.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "ymaps": "^0.2.1",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {

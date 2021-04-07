@@ -9,7 +9,7 @@ import {AppComponent} from '../app.component';
 class User {
   id: string;
   name: string;
-  img: string;
+  img: Img;
   email: string;
   telephone: string;
   lastName = ' ';
