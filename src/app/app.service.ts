@@ -34,8 +34,8 @@ class Login {
 @Injectable()
 export class AppService {
   isAdmin = false;
-  serverURL2 = '';
-  serverURL = '//localhost/';
+  serverURL = '';
+  serverURL2 = '//localhost/';
   authenticated = false;
   login: Login = new Login();
 
@@ -57,9 +57,10 @@ export class AppService {
     let item;
 
     for (item of this.login.authorities) {
-      this.isAdmin = (item.authority === 'ADMIN') && (this.isAdmin !== true);
+      this.isAdmin = (item.authority == 'ADMIN');
+      console.log(this.isAdmin);
       if (this.isAdmin) {
-        break;
+        return this.isAdmin;
       }
     }
     return this.isAdmin;

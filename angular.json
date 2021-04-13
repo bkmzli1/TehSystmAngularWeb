@@ -16,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "B:/TehSystem3/src/main/resources/templates",
+            "outputPath": "C:/Users/48562/IdeaProjects/TehSystem3/src/main/resources/templates",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
