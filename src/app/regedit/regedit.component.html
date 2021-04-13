@@ -1,0 +1,33 @@
+<div class="text_padding">
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="table table-striped">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">ФИО</th>
+        <th scope="col">Login</th>
+        <th scope="col">Роли</th>
+        <th scope="col">Учетная запись просрочена</th>
+        <th scope="col">Учетная запись заблокирована</th>
+        <th scope="col">Учетная запись включена</th>
+        <th scope="col">Учетная запись истекла</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr style=" z-index: 0;" *ngFor="let item of logins" (click)="text(item.id) ">
+
+        <td>{{item.id}}</td>
+        <td>{{item.lastName + ' ' + item.firstName + ' ' + item.middleName}}</td>
+        <td>{{item.username}}</td>
+        <td> <div *ngFor="let role of item.authorities">{{role.authority}} </div></td>
+        <td>{{!item.accountNonExpired}}</td>
+        <td>{{!item.accountNonLocked}}</td>
+        <td>{{item.enabled}}</td>
+        <td>{{!item.credentialsNonExpired}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

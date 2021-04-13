@@ -51,7 +51,7 @@
   </div>
 
 
-  <div class="input-group mb-3">
+  <div class="input-group mb-3" [hidden]="password">
     <div class="input-group-prepend">
     <span class="input-group-text" [ngClass]="{class1:user.passwordError}" id="basic-addon2">
 
@@ -77,7 +77,7 @@
   </div>
 
 
-  <div class="input-group mb-3">
+  <div class="input-group mb-3"  [hidden]="password">
     <div class="input-group-prepend">
     <span class="input-group-text" [ngClass]="{class1:user.cPasswordError}" id="basic-addon3">
 
@@ -176,22 +176,33 @@
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
         <div class="input-group mb-3">
-          <div class="custom-control custom-checkbox" (click)="user.admin = true">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
+          <div class="custom-control custom-checkbox">
+            <input (click)="bole(user.admin = !user.admin )" type="checkbox" class="custom-control-input"
+                   id="customCheck1">
             <label class="custom-control-label" for="customCheck1">Администратор</label>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
         <div class="input-group mb-3">
-          <div class="custom-control custom-checkbox" (click)="user.executor = true">
-            <input type="checkbox" class="custom-control-input" id="customCheck2">
+          <div class="custom-control custom-checkbox">
+            <input (click)="bole(user.executor = !user.executor)" type="checkbox" class="custom-control-input"
+                   id="customCheck2">
             <label class="custom-control-label" for="customCheck2">Исполнитель</label>
           </div>
         </div>
       </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="input-group mb-3">
+          <div class="custom-control custom-checkbox   ">
+            <input (click)="bole(password = !password )" type="checkbox" class="custom-control-input" id="customCheck3" checked>
+            <label class="custom-control-label" for="customCheck3">не изменять пароль</label>
+          </div>
+        </div>
+      </div>
     </div>
-    <button class="ld-but" (click)="crate()">Создать пользователя</button>
+    <button class="ld-but" (click)="crate()">Изменить данные пользователя</button>
   </div>
 
 

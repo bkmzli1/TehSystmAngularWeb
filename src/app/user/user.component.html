@@ -9,7 +9,7 @@
 </section>
 <div class="container mt-3 ">
   <div class="row">
-    <div class="col-12 col-md-6 col-lg-4">
+    <div  style="width: max-content"  class="col-12 col-md-6 col-lg-4">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Логин     </span>
@@ -58,45 +58,45 @@
 
     </div>
 
-  </div>
+
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="app.isAdmin || data == true">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Учетная запись просрочена </span>
+          </div>
+          <label class="form-control"> <div >{{bolConvertor(!login.accountNonExpired)}} </div></label>
+        </div>
+
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="app.isAdmin || data == true" >
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Учетная запись  заблокирована     </span>
+          </div>
+          <label class="form-control"> <div >{{ bolConvertor(!login.accountNonLocked)}} </div></label>
+        </div>
+
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="app.isAdmin || data == true">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Учетная запись включена     </span>
+          </div>
+          <label class="form-control"> {{bolConvertor(login.enabled)}} </label>
+        </div>
+
+      </div>
+      <div class="col-12 col-md-6 col-lg-4"  *ngIf="app.isAdmin || data == true">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Учетная запись истекла</span>
+          </div>
+          <label class="form-control">{{bolConvertor(!login.credentialsNonExpired)}}</label>
+        </div>
+
+      </div>
+
+    </div>
+
 </div>
-<div class="container mt-3" *ngIf="app.isAdmin || data == true">
 
-  <div class="col-12 col-md-6 col-lg-4" >
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Учетная запись Просроченной      </span>
-      </div>
-      <label class="form-control"> <div >{{bolConvertor(!login.accountNonExpired)}} </div></label>
-    </div>
-
-  </div>
-  <div class="col-12 col-md-6 col-lg-4" >
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Учетная Запись  Заблокирована     </span>
-      </div>
-      <label class="form-control"> <div >{{ bolConvertor(!login.accountNonLocked)}} </div></label>
-    </div>
-
-  </div>
-  <div class="col-12 col-md-6 col-lg-4" >
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Учетная Запись включена     </span>
-      </div>
-      <label class="form-control"> {{bolConvertor(login.enabled)}} </label>
-    </div>
-
-  </div>
-  <div class="col-12 col-md-6 col-lg-4"  >
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Учетная Запись Истекла</span>
-      </div>
-      <label class="form-control">{{bolConvertor(!login.credentialsNonExpired)}}</label>
-    </div>
-
-  </div>
-
-</div>

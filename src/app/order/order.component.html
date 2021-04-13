@@ -30,9 +30,9 @@
     </a>
 
 
-    <div [hidden]="isUserEx()">
+    <div *ngIf="!orders.done" [hidden]="!isUserEx()">
       <p></p>
-      <button style="width: 100%" *ngIf="!orders.done" class="ld-but" (click)="exComplete()">Отметить как выполненное
+      <button style="width: 100%" class="ld-but" (click)="exComplete()">Отметить как выполненное
       </button>
     </div>
     <p></p>
@@ -44,6 +44,10 @@
     <div *ngIf="orders.done && !orders.doneCrate" [hidden]="!isUserCre()">
       <button style="width: 100%" class="ld-but" (click)="creComplete(0)">Опровергнуть выполнение</button>
     </div>
+    <p></p>
+    <div [hidden]="!isUserCre()">
+      <button style="width: 100%" class="ld-but" (click)="del()">удалить</button>
+    </div>
   </div>
 </div>
 
@@ -52,10 +56,10 @@
     <div id="WebChatFormForm" class="html-chat-history ">
       <div *ngFor="let ms of orders.massages">
         <div *ngIf="ms.user.id == app.login.id">
-          <div class="alert-secondary my-2 px-2 py-1 ml-auto"  style="width: 45%;border-radius: 10px;">
+          <div class="alert-secondary my-2 px-2 py-1 ml-auto" style=" min-width:20%; width: 45%;border-radius: 10px;">
 
 
-            <p class="border-bottom border-dark" style="display: inline" >
+            <p class="border-bottom border-dark" style="display: inline">
               @> {{ms.user.lastName}} {{ms.user.firstName}} {{ms.user.middleName}}</p>
             <div *ngIf="ms.imgs != null">
               <div *ngFor="let img of ms.imgs ">
@@ -72,7 +76,7 @@
           </div>
         </div>
         <div *ngIf="ms.user.id != app.login.id">
-          <div class="alert-success my-2 px-2 py-1" style="width: 45%;border-radius: 10px;">
+          <div class="alert-success my-2 px-2 py-1" style="min-width:20%; width: 45%;border-radius: 10px;">
 
 
             <p class="border-bottom border-dark" style="display: inline">
@@ -81,7 +85,9 @@
               <div *ngFor="let img of ms.imgs ">
                 <a [href]="app.serverURL + img.img">
                   <div class="grid">
-                    <img style="height: auto; width: 400px" [src]="app.serverURL + img.img">
+                    <img style=" width: 100%;
+  height: 100%;
+  object-fit: contain;" [src]="app.serverURL + img.img">
                   </div>
                 </a>
               </div>

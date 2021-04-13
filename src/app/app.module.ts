@@ -7,7 +7,6 @@ import {HeadComponent} from './head/head.component';
 import {LoginComponent} from './login/login.component';
 
 
-
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'home', component: HomeComponent},
@@ -18,6 +17,8 @@ const routes: Routes = [
   {path: 'reg', component: CreateUserComponent},
   {path: 'usere/:id', component: UserComponent},
   {path: 'ordering', component: OrderingComponent},
+  {path: 'regedit', component: RegeditComponent},
+  {path: 'useredit/:id', component: UserEditComponent},
 
 ];
 
@@ -31,16 +32,19 @@ import {
   HttpXsrfTokenExtractor
 } from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppService} from './app.service';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable} from 'rxjs';
 import {CreateOrderComponent} from './create-order/create-order.component';
 import {OrderComponent} from './order/order.component';
-import { ListOrderComponent } from './list-order/list-order.component';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { UserComponent } from './user/user.component';
-import { OrderingComponent } from './ordering/ordering.component';
+import {ListOrderComponent} from './list-order/list-order.component';
+import {CreateUserComponent} from './create-user/create-user.component';
+import {UserComponent} from './user/user.component';
+import {OrderingComponent} from './ordering/ordering.component';
+import {PhoneMaskDirective} from './create-user/phone-mask.directive';
+import { RegeditComponent } from './regedit/regedit.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 
 @Injectable()
@@ -70,7 +74,12 @@ export class HttpXsrfInterceptor implements HttpInterceptor {
     ListOrderComponent,
     CreateUserComponent,
     UserComponent,
-    OrderingComponent
+    OrderingComponent,
+    PhoneMaskDirective,
+    RegeditComponent,
+    UserEditComponent
+  ], exports: [
+    PhoneMaskDirective
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -81,6 +90,7 @@ export class HttpXsrfInterceptor implements HttpInterceptor {
       headerName: 'My-Xsrf-Header' // this is optional
     }),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [AppService, {provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true}, HttpClientModule, CookieService],
   bootstrap: [AppComponent],

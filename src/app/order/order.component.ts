@@ -70,19 +70,21 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     let inputs = document.querySelectorAll('.input__file');
-    Array.prototype.forEach.call(inputs, function (input) {
+    Array.prototype.forEach.call(inputs, function(input) {
       let label = input.nextElementSibling,
         labelVal = label.querySelector('.input__file-button-text').innerText;
 
-      input.addEventListener('change', function (e) {
+      input.addEventListener('change', function(e) {
         let countFiles = '';
-        if (this.files && this.files.length >= 1)
+        if (this.files && this.files.length >= 1) {
           countFiles = this.files.length;
+        }
 
-        if (countFiles)
+        if (countFiles) {
           label.querySelector('.input__file-button-text').innerText = 'Выбрано файлов: ' + countFiles;
-        else
+        } else {
           label.querySelector('.input__file-button-text').innerText = labelVal;
+        }
       });
     });
   }
@@ -130,7 +132,11 @@ export class OrderComponent implements OnInit {
     let isEx = false;
     let item;
     for (item of this.orders.executor) {
-      isEx = (this.app.login.id === item.id) && isEx === false;
+      console.log(this.app.login.id == item.id);
+      isEx = (this.app.login.id == item.id);
+      if (isEx == true) {
+        break;
+      }
     }
     return isEx;
   }
@@ -138,7 +144,8 @@ export class OrderComponent implements OnInit {
   isUserCre() {
     console.log(this.app.login.id);
     console.log(this.orders.creator.id);
-    return this.app.login.id === this.orders.creator.id;
+    console.log((this.app.login.id === this.orders.creator.id) || this.app.isRoot());
+    return (this.app.login.id === this.orders.creator.id) || this.app.isRoot();
   }
 
   exComplete() {
@@ -159,5 +166,12 @@ export class OrderComponent implements OnInit {
     } else {
       return '(не подтверждённое)';
     }
+  }
+
+  del() {
+    this.http.delete(this.app.serverURL + 'task/delete/' + this.orders.id).subscribe((next: any) => {
+      this.orders = next;
+      this.router.navigateByUrl('/ordersCreate');
+    });
   }
 }

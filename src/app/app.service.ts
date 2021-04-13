@@ -58,6 +58,9 @@ export class AppService {
 
     for (item of this.login.authorities) {
       this.isAdmin = (item.authority === 'ADMIN') && (this.isAdmin !== true);
+      if (this.isAdmin) {
+        break;
+      }
     }
     return this.isAdmin;
 
@@ -90,7 +93,6 @@ export class AppService {
     }, errors => {
       callback(true);
     });
-
 
 
   }
