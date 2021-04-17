@@ -4,9 +4,9 @@
 
     <div class="collapse navbar-collapse  " id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <!--      <li class="nav-item active">-->
-        <!--        <a class="nav-link" routerLinkActive="active" routerLink="/home">Главная</a>-->
-        <!--      </li>-->
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" routerLinkActive="active" routerLink="/login">Главная</a>-->
+<!--        </li>-->
         <li class="nav-item active" *ngIf="authenticated()">
           <a class="nav-link" routerLinkActive="active" routerLink="/orders">Заказы</a>
         </li>
@@ -28,9 +28,9 @@
         <li class="nav-item active" [hidden]="!app.isRoot()">
           <a class="nav-link" routerLinkActive="active" routerLink="/reg">Регистрация</a>
         </li>
-        <!--      <li class="nav-item active" [hidden]="!authenticated()">-->
-        <!--        <a class="nav-link" routerLinkActive="active" routerLink="/myOrders">Мои заказы</a>-->
-        <!--      </li>-->
+<!--              <li class="nav-item active" [hidden]="!authenticated()">-->
+<!--                <a class="nav-link" routerLinkActive="active" routerLink="/myOrders">Мои заказы</a>-->
+<!--              </li>-->
         <li class="nav-item active" [hidden]="!authenticated()">
           <a class="nav-link" routerLinkActive="active"
              routerLink="/usere/{{app.login.id}}">Профиль {{app.login.username}}</a>

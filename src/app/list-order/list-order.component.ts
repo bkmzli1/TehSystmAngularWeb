@@ -52,7 +52,9 @@ class Orders {
 export class ListOrderComponent implements OnInit {
   orders: Orders[] = [];
 
-  constructor(private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService, public appc: AppComponent) {
+
+  constructor(private app: AppService, private http: HttpClient, private router: Router,
+              private cookieService: CookieService, public appc: AppComponent) {
     this.appc.cont = true;
     this.http.get(app.serverURL + 'task/tasks').subscribe((response: Orders[]) => {
 
@@ -64,7 +66,7 @@ export class ListOrderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  text(id: string) {
+  text(id: string): any {
     this.router.navigateByUrl('/order/' + id);
   }
 }

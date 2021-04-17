@@ -138,7 +138,7 @@ export class OrderComponent implements OnInit {
         break;
       }
     }
-    return isEx;
+    return isEx || this.app.isRoot();
   }
 
   isUserCre() {

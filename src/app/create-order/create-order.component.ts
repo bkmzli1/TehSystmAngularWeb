@@ -51,7 +51,8 @@ export class CreateOrderComponent implements OnInit {
   successful: string[] = [];
 
 
-  constructor(private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService, public appc: AppComponent) {
+  constructor(private app: AppService, private http: HttpClient, private router: Router,
+              private cookieService: CookieService, public appc: AppComponent) {
     this.appc.cont = true;
     this.http.get(app.serverURL + 'executor').subscribe((response: User[]) => {
       this.ex = response;
@@ -59,7 +60,7 @@ export class CreateOrderComponent implements OnInit {
     });
   }
 
-  test(item: string) {
+  test(item: string): any {
     this.http.get(this.app.serverURL + 'user/' + item).subscribe((response: User) => {
       console.log(response);
       this.user = response;
@@ -71,7 +72,7 @@ export class CreateOrderComponent implements OnInit {
 
   }
 
-  addEx() {
+  addEx(): any {
     let isUser = true;
     let itemUser;
 
@@ -149,7 +150,7 @@ export class CreateOrderComponent implements OnInit {
     }
   }
 
-  listId(users: User[]) {
+  listId(users: User[]): any {
     const userId = [];
     let item;
     for (item of users) {
