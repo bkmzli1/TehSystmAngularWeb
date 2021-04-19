@@ -12,6 +12,15 @@ class Img {
   img = '';
 }
 
+class Notifications {
+
+  id: string;
+  text: string;
+  level: string;
+  taskId: string;
+  data: string;
+}
+
 class Login {
   id = '';
   username = ' ';
@@ -28,6 +37,8 @@ class Login {
   accountNonExpired: string;
   accountNonLocked: string;
   enabled: string;
+
+  notifications: Notifications[];
   credentialsNonExpired: string;
 }
 
@@ -49,8 +60,9 @@ export class UserComponent implements OnInit {
       this.data = params['data'];
     });
     this.http.get(this.app.serverURL + 'user/' + this.id).subscribe((next: Login) => {
+      console.log(next);
       this.login = next;
-      console.log(this.login);
+
     });
     this.appc.cont = false;
   }
@@ -58,7 +70,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      console.log(params.get('data'));
+
     });
   }
 

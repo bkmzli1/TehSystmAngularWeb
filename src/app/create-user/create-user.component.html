@@ -176,7 +176,7 @@
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
         <div class="input-group mb-3">
-          <div class="custom-control custom-checkbox" (click)="user.admin = true">
+          <div class="custom-control custom-checkbox" (click)="user.admin = !user.admin">
             <input type="checkbox" class="custom-control-input" id="customCheck1">
             <label class="custom-control-label" for="customCheck1">Администратор</label>
           </div>
@@ -184,7 +184,7 @@
       </div>
       <div class="col-12 col-md-6 col-lg-4">
         <div class="input-group mb-3">
-          <div class="custom-control custom-checkbox" (click)="user.executor = true">
+          <div class="custom-control custom-checkbox" (click)="user.executor = !user.executor">
             <input type="checkbox" class="custom-control-input" id="customCheck2">
             <label class="custom-control-label" for="customCheck2">Исполнитель</label>
           </div>

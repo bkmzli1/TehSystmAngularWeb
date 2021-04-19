@@ -56,13 +56,11 @@ export class CreateOrderComponent implements OnInit {
     this.appc.cont = true;
     this.http.get(app.serverURL + 'executor').subscribe((response: User[]) => {
       this.ex = response;
-      console.log(this.ex);
     });
   }
 
   test(item: string): any {
     this.http.get(this.app.serverURL + 'user/' + item).subscribe((response: User) => {
-      console.log(response);
       this.user = response;
 
     });
@@ -93,11 +91,11 @@ export class CreateOrderComponent implements OnInit {
       }
 
     }
-    console.log(this.exList);
+
   }
 
   handleFileInput(fileList: FileList) {
-    console.log(fileList);
+
     const uploadData = new FormData();
     for (let i = 0; i < fileList.length; i++) {
       uploadData.append('mfImg', fileList[i], fileList.item(i).name);
@@ -107,7 +105,7 @@ export class CreateOrderComponent implements OnInit {
   }
 
   type(numbe: any) {
-    console.log(numbe);
+
     this.types = numbe;
   }
 
@@ -131,9 +129,9 @@ export class CreateOrderComponent implements OnInit {
             executor: list,
             imgs: next2
           };
-          console.log(taskCreate);
+
           this.http.post(this.app.serverURL + 'task/create', taskCreate).subscribe((next: any) => {
-            console.log(next.error);
+
             if (next.error !== undefined) {
               this.error = next.error;
             } else {

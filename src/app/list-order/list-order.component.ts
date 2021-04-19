@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppService} from '../app.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
@@ -49,24 +49,45 @@ class Orders {
   templateUrl: './list-order.component.html',
   styleUrls: ['./list-order.component.css']
 })
-export class ListOrderComponent implements OnInit {
+export class ListOrderComponent implements OnInit, OnDestroy {
   orders: Orders[] = [];
-
+  upload;
 
   constructor(private app: AppService, private http: HttpClient, private router: Router,
               private cookieService: CookieService, public appc: AppComponent) {
     this.appc.cont = true;
-    this.http.get(app.serverURL + 'task/tasks').subscribe((response: Orders[]) => {
-
-      this.orders = response;
-      console.log(this.orders);
-    });
+    this.upload = false;
+    this.uploadOrder();
   }
+
+  uploadOrder(): any {
+    if (this.upload == null) {
+      return;
+    }
+    if (!this.upload) {
+      this.http.get(this.app.serverURL + 'task/tasks').subscribe((response: Orders[]) => {
+
+        this.orders = response;
+
+      });
+    } else {
+      this.http.post(this.app.serverURL + 'task/tasks', null).subscribe((response: Orders[]) => {
+
+        this.orders = response;
+
+      });
+    }
+  }
+
 
   ngOnInit(): void {
   }
 
   text(id: string): any {
     this.router.navigateByUrl('/order/' + id);
+  }
+
+  ngOnDestroy(): void {
+    this.upload = null;
   }
 }

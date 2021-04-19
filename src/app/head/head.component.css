@@ -1,0 +1,28 @@
+.notification {
+
+  text-decoration: none;
+  margin-right: 10px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification:hover {
+  color: #00ffb0;
+}
+
+.notification .badge {
+  position: absolute;
+  top: auto;
+  right: auto;
+  border-radius: 100%;
+  color: #d21111;
+}
+
+.badgeof {
+  opacity: 0;
+}
+
+.notificationof {
+  color: lightgrey;
+}

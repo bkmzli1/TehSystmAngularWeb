@@ -45,7 +45,7 @@ export class RegeditComponent implements OnInit {
   constructor(private app: AppService, private http: HttpClient, private router: Router, private cookieService: CookieService, public appc: AppComponent) {
     this.http.get(this.app.serverURL + 'allusers').subscribe((next: Login[]) => {
       this.logins = next;
-      console.log(this.logins);
+
     });
     this.appc.cont = false;
   }

@@ -44,7 +44,7 @@ export class UserEditComponent implements OnInit {
     this.http.get(this.app.serverURL + 'user/' + this.id).subscribe((next: User) => {
       next.password = '';
       this.user = next;
-      console.log(this.user);
+
     });
     this.form = fb.group({
       phone: ['']
@@ -75,9 +75,9 @@ export class UserEditComponent implements OnInit {
       telephone: this.user.telephone,
       passordof: this.password,
     };
-    console.log(UserRegisterBindingModel);
+
     this.http.post(this.app.serverURL + 'edituserapi', UserRegisterBindingModel).subscribe((next: any) => {
-      console.log(next);
+
       this.error = next.error;
       if (next.error == null) {
         this.successful = ['Данные пользователя именины'];
@@ -87,6 +87,6 @@ export class UserEditComponent implements OnInit {
   }
 
   bole(b) {
-    console.log(b);
+
   }
 }

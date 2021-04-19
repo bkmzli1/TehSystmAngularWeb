@@ -25,8 +25,8 @@
   </div>
 
   <div class="main inline">
-    <a style="width: 100%" [href]="app.serverURL + 'task/download/'+ orders.id">
-      <button style="width: 100%" class="ld-but">Скачать всё</button>
+    <a *ngIf="orders.imgs.length>0" style="width: 100%" [href]="app.serverURL + 'task/download/'+ orders.id">
+      <button style="width: 100%" class="ld-but">Скачать все файлы ({{orders.imgs.length}})</button>
     </a>
 
 
@@ -44,7 +44,7 @@
     <div *ngIf="orders.done && !orders.doneCrate" [hidden]="!isUserCre()">
       <button style="width: 100%" class="ld-but" (click)="creComplete(0)">Опровергнуть выполнение</button>
     </div>
-   <p></p>
+    <p></p>
     <div [hidden]="!isUserCre()">
       <button style="width: 100%" class="ld-but" (click)="del()">удалить</button>
     </div>

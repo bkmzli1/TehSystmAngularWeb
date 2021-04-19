@@ -68,9 +68,9 @@ export class CreateUserComponent implements OnInit {
       cPasswordError: this.user.cPasswordError,
       telephone: this.user.telephone,
     };
-    console.log(UserRegisterBindingModel);
+
     this.http.post(this.app.serverURL + 'reg', UserRegisterBindingModel).subscribe((next: any) => {
-      console.log(next);
+
       this.error = next.error;
       if (next.error == null) {
         this.successful = ['Пользователь создан'];

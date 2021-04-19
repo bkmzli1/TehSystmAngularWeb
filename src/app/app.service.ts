@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {AppComponent} from './app.component';
+import {HeadComponent} from './head/head.component';
 
 class Role {
   authority: string;
@@ -34,8 +35,8 @@ class Login {
 @Injectable()
 export class AppService {
   isAdmin = false;
-  serverURL = '';
-  serverURL2 = '//localhost/';
+  serverURL2 = '';
+  serverURL = '//localhost/';
   authenticated = false;
   login: Login = new Login();
 
@@ -58,7 +59,7 @@ export class AppService {
 
     for (item of this.login.authorities) {
       this.isAdmin = (item.authority == 'ADMIN');
-      console.log(this.isAdmin);
+
       if (this.isAdmin) {
         return this.isAdmin;
       }

@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppService} from '../app.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {AppComponent} from '../app.component';
+import {delay} from 'rxjs/operators';
 
 class User {
   id: string;
@@ -49,23 +50,43 @@ class Orders {
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent implements OnInit, OnDestroy {
 
   id: string;
   orders: Orders = new Orders();
   massages: Massages[];
   massage: Massages = new Massages();
   private fileToUpload: FormData;
+  uploader;
 
   constructor(private route: ActivatedRoute, public app: AppService, private http: HttpClient, private router: Router, public appc: AppComponent) {
     this.appc.cont = true;
     this.route.params.subscribe((params: any) => this.id = params.id);
+    this.uploader = false;
+    this.uploadMessage();
 
-    http.get(app.serverURL + 'task/get/' + this.id).subscribe((next: any) => {
-      console.log(next);
-      this.orders = next;
-    });
+  }
 
+
+  uploadMessage() {
+
+    if (this.uploader == null) {
+
+      return;
+    }
+    if (!this.uploader) {
+
+      this.http.get(this.app.serverURL + 'task/get/' + this.id).subscribe((next: any) => {
+        this.orders = next;
+        this.uploader = true;
+        this.uploadMessage();
+      });
+    } else {
+      this.http.post(this.app.serverURL + 'task/get/' + this.id, true).subscribe((next: any) => {
+        this.orders = next;
+        this.uploadMessage();
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -89,6 +110,11 @@ export class OrderComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.uploader = null;
+  }
+
+
   href(s: string) {
 
   }
@@ -106,7 +132,7 @@ export class OrderComponent implements OnInit {
           id: this.orders.id
         }).subscribe(
           (next: Orders) => {
-            console.log(next);
+
             this.orders = next;
           }
         );
@@ -119,7 +145,7 @@ export class OrderComponent implements OnInit {
   }
 
   handleFileInput(fileList: FileList) {
-    console.log(fileList);
+
     const uploadData = new FormData();
     for (let i = 0; i < fileList.length; i++) {
       uploadData.append('mfImg', fileList[i], fileList.item(i).name);
@@ -132,7 +158,7 @@ export class OrderComponent implements OnInit {
     let isEx = false;
     let item;
     for (item of this.orders.executor) {
-      console.log(this.app.login.id == item.id);
+
       isEx = (this.app.login.id == item.id);
       if (isEx == true) {
         break;
@@ -142,9 +168,7 @@ export class OrderComponent implements OnInit {
   }
 
   isUserCre() {
-    console.log(this.app.login.id);
-    console.log(this.orders.creator.id);
-    console.log((this.app.login.id === this.orders.creator.id) || this.app.isRoot());
+
     return (this.app.login.id === this.orders.creator.id) || this.app.isRoot();
   }
 

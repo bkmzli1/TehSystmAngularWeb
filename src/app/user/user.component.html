@@ -7,96 +7,116 @@
   <div alt="" [style.backgroundImage]="'url('+app.serverURL+login.img.img+')'"
        class="u-image u-image-circle u-image-2"></div>
 </section>
-<div class="container mt-3 ">
+<div class="container">
+
   <div class="row">
-    <div  style="width: max-content"  class="col-12 col-md-6 col-lg-4">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Логин     </span>
-        </div>
-        <label class="form-control"> {{login.username}}</label>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> ФИО</span>
-        </div>
-        <label class="form-control"
-        > {{login.lastName}} {{login.firstName}} {{login.middleName}}</label>
-      </div>
-
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Почта     </span>
-        </div>
-        <label class="form-control"
-        >{{login.email}}</label>
-      </div>
-
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Телефон     </span>
-        </div>
-        <label class="form-control"
-        >{{login.telephone}}</label>
-      </div>
-
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Роли     </span>
-        </div>
-        <label class="form-control"> <div *ngFor="let role of login.authorities">{{role.authority}} </div></label>
-      </div>
-
-    </div>
-
-
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="app.isAdmin || data == true">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Учетная запись просрочена </span>
+    <div class="col">
+      <div class="container mt-3 ">
+        <h3 align="center">О профиле </h3>
+        <div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Логин     </span>
+            </div>
+            <label class="form-control"> {{login.username}}</label>
           </div>
-          <label class="form-control"> <div >{{bolConvertor(!login.accountNonExpired)}} </div></label>
         </div>
+        <div>
 
-      </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="app.isAdmin || data == true" >
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Учетная запись  заблокирована     </span>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> ФИО</span>
+            </div>
+            <label class="form-control"
+            > {{login.lastName}} {{login.firstName}} {{login.middleName}}</label>
           </div>
-          <label class="form-control"> <div >{{ bolConvertor(!login.accountNonLocked)}} </div></label>
-        </div>
 
-      </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="app.isAdmin || data == true">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Учетная запись включена     </span>
+        </div>
+        <div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Почта     </span>
+            </div>
+            <label class="form-control"
+            >{{login.email}}</label>
           </div>
-          <label class="form-control"> {{bolConvertor(login.enabled)}} </label>
-        </div>
 
-      </div>
-      <div class="col-12 col-md-6 col-lg-4"  *ngIf="app.isAdmin || data == true">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Учетная запись истекла</span>
+        </div>
+        <div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Телефон     </span>
+            </div>
+            <label class="form-control"
+            >{{login.telephone}}</label>
           </div>
-          <label class="form-control">{{bolConvertor(!login.credentialsNonExpired)}}</label>
+
+        </div>
+        <div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Роли     </span>
+            </div>
+            <label class="form-control">
+              <div *ngFor="let role of login.authorities">{{role.authority}} </div>
+            </label>
+          </div>
+
+        </div>
+
+
+        <div *ngIf="app.isAdmin || data == true">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Учетная запись просрочена </span>
+            </div>
+            <label class="form-control">
+              <div>{{bolConvertor(!login.accountNonExpired)}} </div>
+            </label>
+          </div>
+
+        </div>
+        <div *ngIf="app.isAdmin || data == true">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Учетная запись  заблокирована     </span>
+            </div>
+            <label class="form-control">
+              <div>{{ bolConvertor(!login.accountNonLocked)}} </div>
+            </label>
+          </div>
+
+        </div>
+        <div *ngIf="app.isAdmin || data == true">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Учетная запись включена     </span>
+            </div>
+            <label class="form-control"> {{bolConvertor(login.enabled)}} </label>
+          </div>
+
+        </div>
+        <div *ngIf="app.isAdmin || data == true">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Учетная запись истекла</span>
+            </div>
+            <label class="form-control">{{bolConvertor(!login.credentialsNonExpired)}}</label>
+          </div>
+
         </div>
 
       </div>
 
+    </div>
+    <div class="col">
+      <div class="container mt-3 ">
+        <h3 align="center">Уведомления</h3>
+        <div class="alert alert-primary" role="alert" *ngFor="let item of login.notifications">
+          <p style="text-align: right">{{item.data}}</p>
+          {{item.text}}
+        </div>
+      </div>
     </div>
   </div>
-
-
+</div>
